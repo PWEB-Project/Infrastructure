@@ -8,21 +8,6 @@ resource "helm_release" "elasticsearch" {
   values = [
     file("${path.module}/values.yaml")
   ]
-
-  set {
-    name  = "volumeClaimTemplate.storageClassName"
-    value = "elasticsearch-ssd"
-  }
-
-  set {
-    name  = "volumeClaimTemplate.resources.requests.storage"
-    value = "2Gi"
-  }
-
-  set {
-    name  = "imageTag"
-    value = "7.17.3"
-  }
 }
 
 resource "kubernetes_storage_class" "elasticsearch_ssd" {
