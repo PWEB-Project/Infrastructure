@@ -1,21 +1,21 @@
 variable "project_id" {
   description = "project id"
-  default = "pweb-idp"
+  default     = "pweb-idp"
 }
 
 variable "region" {
   description = "region"
-  default = "us-central1"
+  default     = "us-central1"
 }
 
 variable "location" {
   description = "location"
-  default = "us-central1-a"
+  default     = "us-central1-a"
 }
 
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  project     = var.project_id
+  region      = var.region
   credentials = var.gcp_credentials
 }
 
