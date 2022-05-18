@@ -8,10 +8,14 @@ provider "helm" {
   }
 }
 
-module "es" {
-  source = "./es"
+module "service-elasticsearch" {
+  source = "./service-elasticsearch"
 }
 
-module "kib" {
-  source = "./kib"
+module "service-kibana" {
+  source = "./service-kibana"
+}
+
+module "service-rabbitmq" {
+  source = "./service-rabbitmq"
 }
