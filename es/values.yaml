@@ -12,3 +12,26 @@ resources:
   limits:
     cpu: "1000m"
     memory: "512M"
+
+volumeClaimTemplate:
+  storageClassName: "elasticsearch-ssd"
+  resources:
+    requests:
+      storage: "2Gi"
+
+imageTag: "7.17.3"
+replicas: 1
+
+esConfig:
+  elasticsearch.yml: |
+    xpack.security.enabled: false
+    xpack.monitoring.collection.enabled: true
+    discovery.type: single-node
+
+extraEnvs:
+  - name: ELASTIC_PASSWORD
+    value: admin
+  - name: ELASTIC_USERNAME
+    value: admin
+  - name: cluster.initial_master_nodes
+    value: null

@@ -11,3 +11,7 @@ provider "helm" {
 module "es" {
   source = "./es"
 }
+
+module "kib" {
+  source = "./kib"
+}
