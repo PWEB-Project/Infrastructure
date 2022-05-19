@@ -19,3 +19,7 @@ module "service-kibana" {
 module "service-rabbitmq" {
   source = "./service-rabbitmq"
 }
+
+module "service-prometheus-stack" {
+  source = "./service-prometheus-stack"
+}
