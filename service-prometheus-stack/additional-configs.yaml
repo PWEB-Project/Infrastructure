@@ -1,0 +1,8 @@
+- job_name: "rabbitmq"
+  scrape_interval: 15s
+  static_configs:
+  - targets: ["rabbitmq:9419"]
+- job_name: "elasticsearch"
+  scrape_interval: 15s
+  static_configs:
+  - targets: ["prometheus-elasticsearch-exporter:9108"]
