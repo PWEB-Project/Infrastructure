@@ -2,16 +2,16 @@
 antiAffinity: "soft"
 
 # Shrink default JVM heap.
-esJavaOpts: "-Xmx128m -Xms128m"
+# esJavaOpts: "-Xmx128m -Xms128m"
 
 # Allocate smaller chunks of memory per pod.
 resources:
   requests:
-    cpu: "100m"
-    memory: "512M"
+    cpu: "300m"
+    memory: "2G"
   limits:
     cpu: "1000m"
-    memory: "512M"
+    memory: "4G"
 
 volumeClaimTemplate:
   storageClassName: "elasticsearch-ssd"

@@ -1,11 +1,11 @@
 ---
 resources:
   requests:
-    cpu: "100m"
-    memory: "512M"
+    cpu: "300m"
+    memory: "256M"
   limits:
     cpu: "1000m"
-    memory: "512M"
+    memory: "1G"
 
 replicaCount: 1
 
