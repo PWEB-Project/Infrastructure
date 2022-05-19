@@ -6,7 +6,7 @@ resources:
     memory: "512M"
   limits:
     cpu: "1000m"
-    memory: "512M"
+    memory: "1G"
 
 imageTag: "7.17.3"
 replicas: 1
