@@ -1,0 +1,6 @@
+---
+replicaCount: 1
+
+es:
+  uri: http://elasticsearch-master:9200
+  cluster_settings: true

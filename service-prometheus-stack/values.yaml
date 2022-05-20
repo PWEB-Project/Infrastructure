@@ -52,6 +52,22 @@ grafana:
   image:
     tag: 8.3.4
 
+  env:
+    GF_INSTALL_PLUGINS: "flant-statusmap-panel,grafana-piechart-panel"
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      folder: /tmp/dashboards
+      provider: 
+        foldersFromFilesStructure: true
+
+    ## Annotations for Grafana dashboard configmaps
+    ##
+    annotations: 
+      k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+
   ## Configure additional grafana datasources (passed through tpl)
   ## ref: http://docs.grafana.org/administration/provisioning/#datasources
   # additionalDataSources: []
@@ -83,6 +99,12 @@ prometheus:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+
+    additionalScrapeConfigsSecret:
+        enabled: true
+        name: prometheus-additional-configs
+        key: additional-configs.yaml
+
     ## How long to retain metrics
     ##
     retention: 10d
