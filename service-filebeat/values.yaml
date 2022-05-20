@@ -1,0 +1,12 @@
+---
+daemonset:
+  enabled: true
+  extraEnvs:
+    - name: "ELASTICSEARCH_USERNAME"
+      value: "admin"
+    - name: "ELASTICSEARCH_PASSWORD"
+      value: "admin"
+    - name: "ELASTICSEARCH_HOST"
+      value: "elasticsearch-master"
+    - name: "ELASTICSEARCH_PORT"
+      value: "9200"
