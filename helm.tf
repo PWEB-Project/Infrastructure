@@ -35,3 +35,7 @@ module "service-postgresql" {
 module "service-adminer" {
   source = "./service-adminer"
 }
+
+module "service-kong" {
+  source = "./service-kong"
+}

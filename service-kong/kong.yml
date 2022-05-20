@@ -1,0 +1,23 @@
+_format_version: "2.1"
+
+services:
+  - name: grafana
+    url: http://kube-prometheus-stack-grafana:80
+    routes:
+      - name: grafana-service
+        paths:
+          - /grafana
+
+  - name: kibana
+    url: http://kibana-kibana:5601
+    routes:
+      - name: kibana-service
+        paths:
+          - /kibana
+
+  - name: db-adminer
+    url: http://adminer:80
+    routes:
+      - name: adminer-service
+        paths:
+          - /adminer
