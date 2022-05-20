@@ -23,3 +23,4 @@ resource "kubernetes_config_map" "kong-declarative-rules" {
     "kong.yml" = file("${path.module}/kong.yml")
   }
 }
+
