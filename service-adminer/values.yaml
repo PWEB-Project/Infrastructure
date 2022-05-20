@@ -1,0 +1,37 @@
+---
+service:
+  type: ClusterIP
+
+volumeMounts:
+- name: "plugins"
+  mountPath: "/var/www/html/plugins/AdminerCollations.php"
+  subPath: "AdminerCollations.php"
+- name: "plugins"
+  mountPath: "/var/www/html/plugins/AdminerJsonPreview.php"
+  subPath: "AdminerJsonPreview.php"
+- name: "plugins"
+  mountPath: "/var/www/html/plugins/AdminerLoginServers.php"
+  subPath: "AdminerLoginServers.php"
+- name: "plugins"
+  mountPath: "/var/www/html/plugins/AdminerSimpleMenu.php"
+  subPath: "AdminerSimpleMenu.php"
+- name: "plugins-enabled"
+  mountPath: "/var/www/html/plugins-enabled/AdminerCollations.php"
+  subPath: "AdminerCollations.php"
+- name: "plugins-enabled"
+  mountPath: "/var/www/html/plugins-enabled/AdminerJsonPreview.php"
+  subPath: "AdminerJsonPreview.php"
+- name: "plugins-enabled"
+  mountPath: "/var/www/html/plugins-enabled/AdminerLoginServers.php"
+  subPath: "AdminerLoginServers.php"
+- name: "plugins-enabled"
+  mountPath: "/var/www/html/plugins-enabled/AdminerSimpleMenu.php"
+  subPath: "AdminerSimpleMenu.php"
+
+volumes:
+  - name: "plugins"
+    configMap:
+      name: "adminer-plugins"
+  - name: "plugins-enabled"
+    configMap:
+      name: "adminer-plugins-enabled"

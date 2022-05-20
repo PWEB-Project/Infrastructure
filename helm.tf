@@ -23,3 +23,15 @@ module "service-rabbitmq" {
 module "service-prometheus-stack" {
   source = "./service-prometheus-stack"
 }
+
+module "service-mysql" {
+  source = "./service-mysql"
+}
+
+module "service-postgresql" {
+  source = "./service-postgresql"
+}
+
+module "service-adminer" {
+  source = "./service-adminer"
+}
