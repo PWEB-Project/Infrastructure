@@ -54,7 +54,7 @@ resource "kubernetes_config_map" "grafana-dashboards-infra" {
   }
 
   data = {
-    "rabbitmq.json"           = file("${path.module}/dashboards/rabbitmq.json")
-    "elasticsearch.json"      = file("${path.module}/dashboards/elasticsearch.json")
+    "rabbitmq.json"      = file("${path.module}/dashboards/rabbitmq.json")
+    "elasticsearch.json" = file("${path.module}/dashboards/elasticsearch.json")
   }
 }
