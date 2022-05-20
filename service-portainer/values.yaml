@@ -1,0 +1,17 @@
+---
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "512M"
+  limits:
+    cpu: "1000m"
+    memory: "1G"
+
+
+service:
+  type: "ClusterIP"
+
+persistence:
+  enabled: true
+  storageClass: standard
