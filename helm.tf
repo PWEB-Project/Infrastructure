@@ -39,3 +39,7 @@ module "service-adminer" {
 module "service-kong" {
   source = "./service-kong"
 }
+
+module "service-portainer" {
+  source = "./service-portainer"
+}
