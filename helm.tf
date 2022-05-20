@@ -43,3 +43,7 @@ module "service-kong" {
 module "service-portainer" {
   source = "./service-portainer"
 }
+
+module "service-filebeat" {
+  source = "./service-filebeat"
+}
