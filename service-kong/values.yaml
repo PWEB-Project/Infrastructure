@@ -4,12 +4,6 @@ env:
   database: "off"
   "declarative_config": "/usr/local/kong/declarative/kong.yml"
   "admin_listen": "0.0.0.0:8001, 0.0.0.0:8444 ssl"
-#   database: postgres
-#   pg_host: postgresql
-#   pg_port: 5432
-#   pg_user: admin
-#   pg_password: admin
-#   pg_database: kong
 
 resources:
   requests:
@@ -19,7 +13,6 @@ resources:
     cpu: 1
     memory: 2Gi
 
-## Define any volumes and mounts you want present in the Kong proxy container
 deployment:
   userDefinedVolumes:
   - name: "declarative"
@@ -35,13 +28,3 @@ ingressController:
 
 admin:
   useTLS: false
-
-# manager:
-#   enabled: true
-#   http:
-#     enabled: true
-#     servicePort: 8002
-#     containerPort: 8002
-
-# image:
-#   tag: "2.6.1"
