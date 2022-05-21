@@ -10,3 +10,7 @@
   scrape_interval: 15s
   static_configs:
   - targets: ["kong-kong-admin:8001"]
+- job_name: "postgresql"
+  scrape_interval: 15s
+  static_configs:
+  - targets: ["postgresql-metrics:9187"]
