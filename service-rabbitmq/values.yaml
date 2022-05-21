@@ -1,4 +1,8 @@
 ---
+auth:
+  username: admin
+  existingPasswordSecret: rabbitmq-credentials
+
 resources:
   requests:
     cpu: "300m"

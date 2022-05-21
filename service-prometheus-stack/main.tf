@@ -1,3 +1,11 @@
+variable "postgresql_password" {
+  sensitive = true
+}
+
+variable "elasticsearch_password" {
+  sensitive = true
+}
+
 resource "helm_release" "prometheus" {
   name       = "kube-prometheus-stack"
   repository = "https://prometheus-community.github.io/helm-charts"

@@ -4,7 +4,8 @@ replicaCount: 1
 config:
   datasource:
     host: postgresql
-    user: admin
-    password: admin
     port: "5432"
     database: 'warproject'
+    passwordSecret:
+      name: "postgresql-credentials"
+      key: password
