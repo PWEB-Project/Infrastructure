@@ -69,6 +69,14 @@ grafana:
     ##
     annotations: 
       k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+    
+    persistence:
+      type: pvc
+      enabled: true
+      storageClassName: standard-rwo
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
 
   ## Configure additional grafana datasources (passed through tpl)
   ## ref: http://docs.grafana.org/administration/provisioning/#datasources

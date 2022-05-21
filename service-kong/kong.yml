@@ -99,3 +99,7 @@ services:
       regex_priority: 0
       strip_path: true
       preserve_host: false
+
+plugins:
+  - name: bot-detection
+  - name: prometheus
