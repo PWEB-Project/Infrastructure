@@ -27,6 +27,18 @@ resource "helm_release" "prometheus-elasticsearch" {
   ]
 }
 
+resource "helm_release" "prometheus-postgresql" {
+  name       = "prometheus-postgres-exporter"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "prometheus-postgres-exporter"
+  version    = "3.0.0"
+  timeout    = 900
+
+  values = [
+    file("${path.module}/postgresql.yaml")
+  ]
+}
+
 resource "kubernetes_secret" "prometheus-additional-configs" {
   metadata {
     name = "prometheus-additional-configs"
@@ -57,5 +69,6 @@ resource "kubernetes_config_map" "grafana-dashboards-infra" {
     "rabbitmq.json"      = file("${path.module}/dashboards/rabbitmq.json")
     "elasticsearch.json" = file("${path.module}/dashboards/elasticsearch.json")
     "kong.json"          = file("${path.module}/dashboards/kong.json")
+    "postgresql.json"    = file("${path.module}/dashboards/postgresql.json")
   }
 }
