@@ -4,11 +4,9 @@ global:
   storageClass: standard-rwo
   postgresql:
     auth:
-      postgresPassword: admin
       username: admin
-      password: admin
-      database: kong
-
+      database: warproject
+      existingSecret: "postgresql-credentials"
 primary:
   resources:
     requests:

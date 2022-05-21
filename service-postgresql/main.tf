@@ -1,3 +1,7 @@
+variable "password" {
+  sensitive = true
+}
+
 resource "helm_release" "postgresql" {
   name       = "postgresql"
   repository = "https://charts.bitnami.com/bitnami"
@@ -8,4 +12,19 @@ resource "helm_release" "postgresql" {
   values = [
     file("${path.module}/values.yaml")
   ]
+
+  depends_on = [
+    kubernetes_secret.postgresql-credentials
+  ]
+}
+
+resource "kubernetes_secret" "postgresql-credentials" {
+  metadata {
+    name = "postgresql-credentials"
+  }
+
+  data = {
+    "postgres-password" = var.password
+    "password"          = var.password
+  }
 }

@@ -46,9 +46,6 @@ alertmanager:
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
-  adminUser: admin
-  adminPassword: admin
-
   image:
     tag: 8.3.4
 
@@ -70,13 +67,31 @@ grafana:
     annotations: 
       k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
     
-    persistence:
-      type: pvc
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: standard-rwo
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+
+  grafana.ini:
+    paths:
+      data: /var/lib/grafana/
+      logs: /var/log/grafana
+      plugins: /var/lib/grafana/plugins
+      provisioning: /etc/grafana/provisioning
+    analytics:
+      check_for_updates: true
+    log:
+      mode: console
+    grafana_net:
+      url: https://grafana.net
+    auth.anonymous:
       enabled: true
-      storageClassName: standard-rwo
-      accessModes:
-        - ReadWriteOnce
-      size: 10Gi
+      org_name: "Main Org."
+      org_role: Editor
+      hide_version: true
 
   ## Configure additional grafana datasources (passed through tpl)
   ## ref: http://docs.grafana.org/administration/provisioning/#datasources

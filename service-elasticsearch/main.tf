@@ -1,3 +1,7 @@
+variable "password" {
+  sensitive = true
+}
+
 resource "helm_release" "elasticsearch" {
   name       = "elasticsearch"
   repository = "https://helm.elastic.co"
@@ -7,6 +11,10 @@ resource "helm_release" "elasticsearch" {
 
   values = [
     file("${path.module}/values.yaml")
+  ]
+
+  depends_on = [
+    kubernetes_secret.elasticsearch-master-credentials
   ]
 }
 
@@ -20,4 +28,15 @@ resource "kubernetes_storage_class" "elasticsearch_ssd" {
     type = "pd-ssd"
   }
   allow_volume_expansion = true
+}
+
+resource "kubernetes_secret" "elasticsearch-master-credentials" {
+  metadata {
+    name = "elasticsearch-master-credentials"
+  }
+
+  data = {
+    "username" = "admin"
+    "password" = var.password
+  }
 }

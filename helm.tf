@@ -9,27 +9,36 @@ provider "helm" {
 }
 
 module "service-elasticsearch" {
-  source = "./service-elasticsearch"
+  source   = "./service-elasticsearch"
+  password = random_password.elasticsearch_password.result
 }
 
 module "service-kibana" {
   source = "./service-kibana"
+
+  depends_on = [
+    module.service-elasticsearch
+  ]
 }
 
 module "service-rabbitmq" {
-  source = "./service-rabbitmq"
+  source   = "./service-rabbitmq"
+  password = random_password.rabbitmq_password.result
 }
 
 module "service-prometheus-stack" {
-  source = "./service-prometheus-stack"
-}
+  source                 = "./service-prometheus-stack"
+  elasticsearch_password = random_password.elasticsearch_password.result
+  postgresql_password    = random_password.postgresql_password.result
 
-module "service-mysql" {
-  source = "./service-mysql"
+  depends_on = [
+    module.service-elasticsearch
+  ]
 }
 
 module "service-postgresql" {
-  source = "./service-postgresql"
+  source   = "./service-postgresql"
+  password = random_password.postgresql_password.result
 }
 
 module "service-adminer" {
@@ -46,4 +55,8 @@ module "service-portainer" {
 
 module "service-filebeat" {
   source = "./service-filebeat"
+
+  depends_on = [
+    module.service-elasticsearch
+  ]
 }

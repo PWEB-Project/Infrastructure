@@ -26,3 +26,18 @@ output "kubernetes_cluster_host" {
 output "public_url" {
   value = "http://${google_compute_address.public_lb_ip.address}"
 }
+
+output "elasticsearch_password" {
+  value     = random_password.elasticsearch_password.result
+  sensitive = true
+}
+
+output "rabbitmq_password" {
+  value     = random_password.rabbitmq_password.result
+  sensitive = true
+}
+
+output "postgresql_password" {
+  value     = random_password.postgresql_password.result
+  sensitive = true
+}
