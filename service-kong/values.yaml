@@ -3,7 +3,7 @@
 env:
   database: "off"
   "declarative_config": "/usr/local/kong/declarative/kong.yml"
-  "admin_listen": "0.0.0.0:8001, 0.0.0.0:8444 ssl"
+  "admin_listen": "0.0.0.0:8001"
 
 resources:
   requests:
@@ -14,6 +14,8 @@ resources:
     memory: 2Gi
 
 deployment:
+  kong:
+    enabled: true
   userDefinedVolumes:
   - name: "declarative"
     configMap:
@@ -23,8 +25,13 @@ deployment:
     mountPath: "/usr/local/kong/declarative/kong.yml"
     subPath: "kong.yml"
 
+admin:
+  enabled: true
+  type: ClusterIP
+  http:
+    enabled: true
+  tls:
+    enabled: false
+
 ingressController:
   enabled: false
-
-admin:
-  useTLS: false

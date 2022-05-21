@@ -6,3 +6,7 @@
   scrape_interval: 15s
   static_configs:
   - targets: ["prometheus-elasticsearch-exporter:9108"]
+- job_name: "kong"
+  scrape_interval: 15s
+  static_configs:
+  - targets: ["kong-kong-admin:8001"]
