@@ -1,0 +1,35 @@
+name: Lint and validate configuration.
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform fmt
+      run: terraform fmt -check
+
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate -no-color
